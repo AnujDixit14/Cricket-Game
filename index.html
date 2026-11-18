@@ -1,76 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <title>Cricket Game</title>
-  <style>
-    body{
-      text-align: center;
-      margin-top: 100px;
-    }
-    button{
-      padding: 10px 20px;
-      font-size: 20px;
-      margin: 10px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1> Bat Ball Stump Game</h1>
-  <button onclick="getComputerChoice(); 
-  let resultMasg;
-  if(computerChoice === 'Bat'){
-    resultMasg = 'its tie match';
-  }
-  else if(computerChoice === 'Bowl'){
-    resultMasg = 'you won';
-  }else{
-    resultMasg = 'Computer Won';
-  }
-  
-  alert(`You choose Bat and Computer Choice is ${computerChoice} and  ${resultMasg}`)
-  ">Bat</button>
-
-  <button onclick="getComputerChoice(); 
-
-  if(computerChoice === 'Bowl'){
-    resultMasg = 'its tie match';
-  }
-  else if(computerChoice === 'Stump'){
-    resultMasg = 'you won';
-  }else{
-    resultMasg = 'Computer Won';
-  }
-  alert(`You choose Bowl and Computer Choice is ${computerChoice} and  ${resultMasg}`)
-  ">Bowl</button>
-
-
-  <button onclick="getComputerChoice(); 
-  
-  if(computerChoice === 'Stump'){
-    resultMasg = 'its tie match';
-  }
-  else if(computerChoice === 'Bat'){
-    resultMasg = 'you won';
-  }else{
-    resultMasg = 'Computer Won';
-  }
-  alert(`You choose Stump and Computer Choice is ${computerChoice} and  ${resultMasg}`)
-  ">Stump</button>
-
-  <script>
-    let computerChoice;
-    function getComputerChoice() {
-      let randomNumber = Math.random() * 3;
-      if (randomNumber < 1) {
-        computerChoice = 'Bat';
-      } else if (randomNumber < 2) {
-        computerChoice = 'Bowl';
-      } else if (randomNumber < 3) {
-        computerChoice = 'Stump';
+  <head>
+    <title>Cricket Game</title>
+    <style>
+      body {
+        text-align: center;
+        margin-top: 100px;
       }
-    } 
-    
-  </script>
-</body>
+      button {
+        padding: 10px 20px;
+        font-size: 20px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bat Ball Stump Game</h1>
+    <button
+      onclick="
+        let computerChoice = getComputerChoice();
+        let resultMasg = result('Bat', computerChoice);
+
+        ShowAlert('Bat', computerChoice, resultMasg);
+      "
+    >
+      Bat
+    </button>
+
+    <button
+      onclick="
+        computerChoice = getComputerChoice();
+
+        resultMasg = result('Bowl', computerChoice);
+
+        ShowAlert('Bowl', computerChoice, resultMasg);
+      "
+    >
+      Bowl
+    </button>
+
+    <button
+      onclick="
+        computerChoice = getComputerChoice();
+
+        resultMasg = result('Stump', computerChoice);
+
+        ShowAlert('Stump', computerChoice, resultMasg);
+      "
+    >
+      Stump
+    </button>
+
+    <script>
+      function getComputerChoice() {
+        let randomNumber = Math.random() * 3;
+        if (randomNumber < 1) {
+          return "Bat";
+        } else if (randomNumber < 2) {
+          return "Bowl";
+        } else if (randomNumber < 3) {
+          return "Stump";
+        }
+      }
+
+      function result(userMove, computerMove) {
+        if (userMove === "Bat") {
+          if (computerMove === "Bat") {
+            return "its tie match";
+          } else if (computerMove === "Bowl") {
+            return "you won";
+          } else {
+            return "Computer Won";
+          }
+        } else if (userMove === "Bowl") {
+          if (computerMove === "Bowl") {
+            return "its tie match";
+          } else if (computerMove === "Stump") {
+            return "you won";
+          } else {
+            return "Computer Won";
+          }
+        } else if (userMove === "Stump") {
+          if (computerMove === "Stump") {
+            return "its tie match";
+          } else if (computerMove === "Bat") {
+            return "you won";
+          } else {
+            return "Computer Won";
+          }
+        }
+      }
+
+      function ShowAlert(userMove, computerChoice, resultMasg) {
+        alert(
+          `You choose ${userMove} and Computer Choice is ${computerChoice} and  ${resultMasg}`,
+        );
+      }
+    </script>
+  </body>
 </html>
